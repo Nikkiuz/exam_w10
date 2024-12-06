@@ -12,7 +12,7 @@ const WeatherDetails = () => {
     setError('')
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=60a4044574a728ee46b503146bd942f4`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=8c213aae94d24bcb33da8a0f54e3d6e1`
       )
       const data = await response.json()
       if (data.cod !== '200') {

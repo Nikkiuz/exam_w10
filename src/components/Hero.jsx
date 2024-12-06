@@ -49,7 +49,7 @@ const Hero = () => {
 
   return (
     <div>
-      <h2>Meteo attuale</h2>
+      <h2>Situazione attuale</h2>
 
       {loading && <div>Caricamento...</div>}
       {error && <div className="alert alert-danger">{error}</div>}
@@ -66,7 +66,6 @@ const Hero = () => {
                 <p className="card-text">
                   Temperatura: {Math.round(city.temp - 273.15)}°C
                 </p>
-                {/* Modifica il link per passare città e paese separatamente */}
                 <Link
                   to={`/details/${city.name}/${city.country}`}
                   className="btn btn-primary"

@@ -31,14 +31,14 @@ const WeatherApp = () => {
   return (
     <>
       <div className="text-center mb-3 mt-3">
-        <h1>Il Meteo a portata di click!</h1>
+        <h1>Il tuo Meteo a portata di click!</h1>
       </div>
       <div>
         <div className="input-group mb-3 mt-3">
           <input
             type="text"
             className="form-control"
-            placeholder="Cerca città..."
+            placeholder="Cerca la tua città..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -59,9 +59,14 @@ const WeatherApp = () => {
               <p className="card-text">
                 Condizioni: {weatherData.weather[0].description}
               </p>
+              {/* Aggiungi il bottone per navigare ai dettagli */}
               <button
                 className="btn btn-secondary"
-                onClick={() => navigate(`/details/${weatherData.name}`)}
+                onClick={() =>
+                  navigate(
+                    `/details/${weatherData.name}/${weatherData.sys.country}`
+                  )
+                }
               >
                 Vedi Dettagli
               </button>

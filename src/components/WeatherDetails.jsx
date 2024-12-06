@@ -20,7 +20,7 @@ const WeatherDetails = () => {
       }
       setCityDetails(data)
     } catch (error) {
-      setError('Si è verificato un errore nel recupero dei dati')
+      setError('Errore nel recupero dei dati')
     } finally {
       setLoading(false)
     }

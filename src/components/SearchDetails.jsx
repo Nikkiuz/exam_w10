@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const SearchDetails = () => {
-  const { city, state } = useParams(); // Estrai città e stato dai parametri dell'URL
+  const { city, state } = useParams(); 
   const [details, setDetails] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);

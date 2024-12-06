@@ -59,7 +59,6 @@ const WeatherApp = () => {
               <p className="card-text">
                 Condizioni: {weatherData.weather[0].description}
               </p>
-              {/* Aggiungi il bottone per navigare ai dettagli */}
               <button
                 className="btn btn-secondary"
                 onClick={() =>

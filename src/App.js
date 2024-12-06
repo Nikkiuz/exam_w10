@@ -16,7 +16,6 @@ function App() {
         <main className="container mt-4">
           <Routes>
             <Route path="/" element={<WeatherApp />} />
-            {/* Modificato per usare due parametri separati */}
             <Route
               path="/details/:cityName/:countryCode"
               element={<WeatherDetails />}

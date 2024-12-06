@@ -21,7 +21,7 @@ const Hero = () => {
         const weatherData = await Promise.all(
           predefinedCities.map(async (city) => {
             const response = await fetch(
-              `https://api.openweathermap.org/data/2.5/weather?q=${city.name},${city.country}&appid=e0cd7e86d9812a3786b1184d3f7166ca`
+              `https://api.openweathermap.org/data/2.5/weather?q=${city.name},${city.country}&appid=60a4044574a728ee46b503146bd942f4`
             )
             const data = await response.json()
             if (data.cod !== 200) {
@@ -44,6 +44,7 @@ const Hero = () => {
     }
 
     fetchWeatherData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

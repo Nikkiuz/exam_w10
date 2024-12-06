@@ -63,7 +63,7 @@ const WeatherApp = () => {
         </div>
       )}
       <div>
-        <Hero /> {/* Mostra Hero qui */}
+        <Hero />
       </div>
     </div>
   )

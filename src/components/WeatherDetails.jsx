@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const WeatherDetails = () => {
-  const { cityName, countryCode } = useParams() // Estrai città e paese dai parametri URL
+  const { cityName, countryCode } = useParams()
   const [cityDetails, setCityDetails] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // Recupera i dettagli della città tramite le API
   const fetchDetails = async (city, country) => {
     setLoading(true)
     setError('')
     try {
-      // Fetch dei dettagli meteo a 4 giorni
       const response = await fetch(
-        `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city},${country}&appid=e0cd7e86d9812a3786b1184d3f7166ca`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=60a4044574a728ee46b503146bd942f4`
       )
       const data = await response.json()
       if (data.cod !== '200') {
@@ -28,7 +26,6 @@ const WeatherDetails = () => {
     }
   }
 
-  // Effettua la fetch quando la pagina si carica
   useEffect(() => {
     if (cityName && countryCode) {
       fetchDetails(cityName, countryCode)

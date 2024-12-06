@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Row, Col, Card, Button, Alert } from 'react-bootstrap'
 
 const Hero = () => {
   const [cities, setCities] = useState([])
@@ -38,9 +39,9 @@ const Hero = () => {
         setCities(weatherData)
       } catch (error) {
         setError('Si è verificato un errore nel recupero dei dati')
-      } finally {
-        setLoading(false)
       }
+
+      setLoading(false)
     }
 
     fetchWeatherData()
@@ -48,35 +49,32 @@ const Hero = () => {
   }, [])
 
   return (
-    <div>
+    <div className="mt-5">
       <h2>Situazione attuale</h2>
 
       {loading && <div>Caricamento...</div>}
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && <Alert variant="danger">{error}</Alert>}
 
-      <div className="row">
+      <Row className="mt-5">
         {cities.map((city, index) => (
-          <div key={index} className="col-md-3 mb-4">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">
+          <Col key={index} md={3} className="mb-4">
+            <Card>
+              <Card.Body>
+                <Card.Title>
                   {city.name}, {city.country}
-                </h5>
-                <p className="card-text">{city.weather}</p>
-                <p className="card-text">
+                </Card.Title>
+                <Card.Text>{city.weather}</Card.Text>
+                <Card.Text>
                   Temperatura: {Math.round(city.temp - 273.15)}°C
-                </p>
-                <Link
-                  to={`/details/${city.name}/${city.country}`}
-                  className="btn btn-primary"
-                >
-                  Vai ai dettagli
+                </Card.Text>
+                <Link to={`/details/${city.name}/${city.country}`}>
+                  <Button variant="primary">Vai ai dettagli</Button>
                 </Link>
-              </div>
-            </div>
-          </div>
+              </Card.Body>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
     </div>
   )
 }

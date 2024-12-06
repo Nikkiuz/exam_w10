@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Hero from './Hero'
+import {
+  Container,
+  Row,
+  Col,
+  InputGroup,
+  FormControl,
+  Button,
+  Card,
+  Alert,
+} from 'react-bootstrap'
 
 const WeatherApp = () => {
   const [query, setQuery] = useState('')
@@ -30,52 +40,56 @@ const WeatherApp = () => {
 
   return (
     <>
-      <div className="text-center mb-3 mt-3">
+      <Container className="text-center mb-3 mt-3">
         <h1>Il tuo Meteo a portata di click!</h1>
-      </div>
-      <div>
-        <div className="input-group mb-3 mt-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Cerca la tua città..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="btn btn-primary" onClick={handleSearch}>
-            Cerca
-          </button>
-        </div>
+      </Container>
 
-        {error && <p className="text-danger">{error}</p>}
+      <Container>
+        <Row className="mb-3 mt-3">
+          <Col>
+            <InputGroup>
+              <FormControl
+                type="text"
+                placeholder="Cerca la tua città..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <Button variant="primary" onClick={handleSearch}>
+                Cerca
+              </Button>
+            </InputGroup>
+          </Col>
+        </Row>
+
+        {error && <Alert variant="danger">{error}</Alert>}
 
         {weatherData && (
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{weatherData.name}</h5>
-              <p className="card-text">
-                Temperatura: {weatherData.main.temp}°C
-              </p>
-              <p className="card-text">
-                Condizioni: {weatherData.weather[0].description}
-              </p>
-              <button
-                className="btn btn-secondary"
-                onClick={() =>
-                  navigate(
-                    `/details/${weatherData.name}/${weatherData.sys.country}`
-                  )
-                }
-              >
-                Vedi Dettagli
-              </button>
-            </div>
-          </div>
+          <Row className="mt-5">
+            <Col>
+              <Card className="h-100">
+                <Card.Body>
+                  <Card.Title>{weatherData.name}</Card.Title>
+                  <Card.Text>Temperatura: {weatherData.main.temp}°C</Card.Text>
+                  <Card.Text>
+                    Condizioni: {weatherData.weather[0].description}
+                  </Card.Text>
+                  <Button
+                    variant="secondary"
+                    onClick={() =>
+                      navigate(
+                        `/details/${weatherData.name}/${weatherData.sys.country}`
+                      )
+                    }
+                  >
+                    Vedi Dettagli
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         )}
-        <div>
-          <Hero />
-        </div>
-      </div>
+        <Hero />
+      </Container>
     </>
   )
 }

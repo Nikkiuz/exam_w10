@@ -40,7 +40,7 @@ const WeatherDetails = () => {
       <h2>
         Dettagli meteo per {cityName}, {countryCode}
       </h2>
-      <h3>Previsioni a 4 giorni</h3>
+      <h3>Previsioni</h3>
       <div className="row">
         {cityDetails &&
           cityDetails.list.slice(0, 4).map((forecast, index) => (

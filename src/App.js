@@ -1,10 +1,9 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import WeatherNavbar from './components/WeatherNavbar' // Percorso corretto
-import WeatherApp from './components/WeatherApp' // Percorso corretto
-import WeatherDetails from './components/WeatherDetails' // Percorso corretto
+import WeatherNavbar from './components/WeatherNavbar'
+import WeatherApp from './components/WeatherApp'
+import WeatherDetails from './components/WeatherDetails'
 
 function App() {
   return (
